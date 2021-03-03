@@ -1,0 +1,21 @@
+<div class="container col-6 text-center bg-light shadow-sm rounded">
+<h1><%= @restaurant.name %></h1>
+<p>address: <%= @restaurant.address  %></p>
+<p>Phone #: <%= @restaurant.phone_number  %></p>
+<p>Style: <%= @restaurant.category  %></p>
+
+<ul class="p-0 list-unstyled">
+  <% @restaurant.reviews.each do |review| %>
+    <li><%= review.content %> 
+    <%= review.rating %></li>
+  <% end %>
+</ul>
+
+
+<h2>Add your new Review</h2>
+<%=  simple_form_for([@restaurant, @review]) do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.submit %>
+  <% end %>
+</div>
